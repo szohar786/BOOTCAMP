@@ -10,7 +10,6 @@
         <version>2.1.7.RELEASE</version>
         <relativePath />
     </parent>
-  
 <dependencies>
 	 <dependency>
             <groupId>org.springframework.boot</groupId>
