@@ -1,0 +1,29 @@
+node{
+
+stage('Checkout GIT Project'){
+    git credentialsId: 'git credentials', url: 'https://github.com/panidummy/DynamicWeb.git'
+}
+
+stage('build and Test'){
+   def MAVEN_HOME = tool name: 'maven-3', type: 'maven'
+   sh "${MAVEN_HOME}/bin/mvn clean package"
+}
+
+
+stage('docker build'){
+    sh "/usr/bin/docker build -t skhanaeie/dynamicpro:3 ."
+}
+
+stage('Push docker image'){
+    withCredentials([usernamePassword(credentialsId: 'dockerID', passwordVariable: 'dockerPwd', usernameVariable: 'dockerUsr')]) {
+       sh "/usr/bin/docker login -u skhanaeie -p ${dockerPwd}"
+    }
+    sh "/usr/bin/docker push skhanaeie/dynamicpro:3"
+}
+
+stage('Run docker image'){
+    sh "/usr/bin/docker run -p 8082:8080 -d skhanaeie/dynamicpro:3"
+}
+}
+
+

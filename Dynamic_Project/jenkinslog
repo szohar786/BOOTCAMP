@@ -1,0 +1,172 @@
+Started by user admin
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline (hide)
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/CICD-PIPELINE
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout GIT Project)
+[Pipeline] git
+The recommended git tool is: NONE
+Warning: CredentialId "git credentials" could not be found.
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/panidummy/DynamicWeb.git # timeout=10
+Fetching upstream changes from https://github.com/panidummy/DynamicWeb.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.17.1'
+ > git fetch --tags --progress -- https://github.com/panidummy/DynamicWeb.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision bc1ef475a951992a616b1ab837c68ffd9ea335a3 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f bc1ef475a951992a616b1ab837c68ffd9ea335a3 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D master # timeout=10
+ > git checkout -b master bc1ef475a951992a616b1ab837c68ffd9ea335a3 # timeout=10
+Commit message: "few changes on dockerfile and jsp"
+ > git rev-list --no-walk bc1ef475a951992a616b1ab837c68ffd9ea335a3 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (build and Test)
+[Pipeline] tool
+[Pipeline] sh
++ /usr/share/maven/bin/mvn clean package
+[[1;34mINFO[m] Scanning for projects...
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] Some problems were encountered while building the effective model for org.example:DynamicWebProject:war:1.0-SNAPSHOT
+[[1;33mWARNING[m] 'dependencies.dependency.scope' for org.junit.jupiter:junit-jupiter:jar must be one of [provided, compile, runtime, test, system] but is '5.5.2'. @ line 28, column 14
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] It is highly recommended to fix these problems because they threaten the stability of your build.
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] For this reason, future Maven versions might no longer support building such malformed projects.
+[[1;33mWARNING[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m-------------------< [0;36morg.example:DynamicWebProject[0;1m >--------------------[m
+[[1;34mINFO[m] [1mBuilding DynamicWebProject Maven Webapp 1.0-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ war ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-clean-plugin:2.5:clean[m [1m(default-clean)[m @ [36mDynamicWebProject[0;1m ---[m
+[[1;34mINFO[m] Deleting /var/lib/jenkins/workspace/CICD-PIPELINE/target
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mDynamicWebProject[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /var/lib/jenkins/workspace/CICD-PIPELINE/src/main/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.1:compile[m [1m(default-compile)[m @ [36mDynamicWebProject[0;1m ---[m
+[[1;34mINFO[m] No sources to compile
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:testResources[m [1m(default-testResources)[m @ [36mDynamicWebProject[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /var/lib/jenkins/workspace/CICD-PIPELINE/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.1:testCompile[m [1m(default-testCompile)[m @ [36mDynamicWebProject[0;1m ---[m
+[[1;34mINFO[m] No sources to compile
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:2.12.4:test[m [1m(default-test)[m @ [36mDynamicWebProject[0;1m ---[m
+[[1;34mINFO[m] No tests to run.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-war-plugin:2.2:war[m [1m(default-war)[m @ [36mDynamicWebProject[0;1m ---[m
+[[1;34mINFO[m] Packaging webapp
+[[1;34mINFO[m] Assembling webapp [DynamicWebProject] in [/var/lib/jenkins/workspace/CICD-PIPELINE/target/DynamicWebProject]
+[[1;34mINFO[m] Processing war project
+[[1;34mINFO[m] Copying webapp resources [/var/lib/jenkins/workspace/CICD-PIPELINE/src/main/webapp]
+[[1;34mINFO[m] Webapp assembled in [40 msecs]
+[[1;34mINFO[m] Building war: /var/lib/jenkins/workspace/CICD-PIPELINE/target/DynamicWebProject.war
+[[1;34mINFO[m] WEB-INF/web.xml already added, skipping
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  3.454 s
+[[1;34mINFO[m] Finished at: 2020-09-28T08:54:52Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (docker build)
+[Pipeline] sh
++ /usr/bin/docker build -t skhanaeie/dynamicpro:3 .
+Sending build context to Docker daemon  5.978MB
+
+Step 1/6 : FROM tomcat:9.0
+ ---> f796d3d2c195
+Step 2/6 : EXPOSE 8082
+ ---> Using cache
+ ---> 14281eeab11d
+Step 3/6 : ARG WAR_FILE=/target/*.war
+ ---> Using cache
+ ---> d5d84b19c788
+Step 4/6 : COPY ${WAR_FILE} /usr/local/tomcat/webapps/dynamicpro.war
+ ---> 14444066cab4
+Step 5/6 : MAINTAINER "Ramu Bikki"
+ ---> Running in 9f36b3f945ae
+Removing intermediate container 9f36b3f945ae
+ ---> 9539a97d974f
+Step 6/6 : CMD ["catalina.sh", "run"]
+ ---> Running in 34ab736404c7
+Removing intermediate container 34ab736404c7
+ ---> cf829500866e
+Successfully built cf829500866e
+Successfully tagged skhanaeie/dynamicpro:3
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Push docker image)
+[Pipeline] withCredentials
+Masking supported pattern matches of $dockerUsr or $dockerPwd
+[Pipeline] {
+[Pipeline] sh
++ /usr/bin/docker login -u **** -p ****
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/lib/jenkins/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] sh
++ /usr/bin/docker push skhanaeie/dynamicpro:3
+The push refers to repository [docker.io/skhanaeie/dynamicpro]
+8227bc2f67cb: Preparing
+b654a29de9ee: Preparing
+1485ce09f585: Preparing
+eb6e8fe5c6dc: Preparing
+8b185d674aef: Preparing
+4f17d163126f: Preparing
+df95ed2a791d: Preparing
+17bdf5e22660: Preparing
+d37096232ed8: Preparing
+6add0d2b5482: Preparing
+4ef54afed780: Preparing
+4f17d163126f: Waiting
+df95ed2a791d: Waiting
+17bdf5e22660: Waiting
+d37096232ed8: Waiting
+6add0d2b5482: Waiting
+4ef54afed780: Waiting
+b654a29de9ee: Mounted from library/tomcat
+8b185d674aef: Mounted from library/tomcat
+1485ce09f585: Mounted from library/tomcat
+eb6e8fe5c6dc: Mounted from library/tomcat
+4f17d163126f: Mounted from library/tomcat
+17bdf5e22660: Mounted from library/tomcat
+df95ed2a791d: Mounted from library/tomcat
+d37096232ed8: Mounted from library/tomcat
+8227bc2f67cb: Pushed
+6add0d2b5482: Mounted from library/tomcat
+4ef54afed780: Mounted from library/tomcat
+3: digest: sha256:dae9fbf452a09baf11b27f1e8865be7a0dd128b80d23aa4203c1a6621e00d145 size: 2631
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run docker image)
+[Pipeline] sh
++ /usr/bin/docker run -p 8082:8080 -d skhanaeie/dynamicpro:3
+52eea4ada5bddf7a04a6122e7eea241127b614bdbdef76bc77a54f0facb13e1a
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
